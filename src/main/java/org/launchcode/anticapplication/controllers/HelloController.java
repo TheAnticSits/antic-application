@@ -3,9 +3,7 @@ package org.launchcode.anticapplication.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
-@ResponseBody
-@RequestMapping("hello")
+@Controller//@RequestMapping("hello")
 public class HelloController {
 /*
     //handles requests at /hello
@@ -18,6 +16,7 @@ public class HelloController {
 
     //handles requests at /hello/goodbye
     @GetMapping("goodbye")
+    @ResponseBody
     public String goodbye(){
         return "Goodbye Antic";
     }
@@ -27,17 +26,19 @@ public class HelloController {
     //lives at http://localhost:8080/hello?name=Antic
 
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
     public String helloWithQueryParam(@RequestParam String name){
         return "Hello, " + name + "!";
     }
 
     //handles requests of the form /hello/LaunchCode
     @GetMapping("/{name}")
+    @ResponseBody
     public String helloWithPathParam(@PathVariable String name){
         return "Hello, " + name + "!";
     }
 
-    //lives at /hello/form
+/*    //lives at /hello/form
     @GetMapping("form")
     public String helloForm(){
         return "<html>" +
@@ -48,6 +49,11 @@ public class HelloController {
                 "</form>" +
                 "</body>" +
                 "</html>";
+    }*/
+
+    @GetMapping("form")
+    public String helloForm(){
+        return "form";
     }
 
 }
