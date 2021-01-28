@@ -8,13 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping(value="helloapplication")
 public class HelloController {
 
     @RequestMapping(value = "hello", method = {RequestMethod.GET, RequestMethod.POST})
     public String helloWithQueryParam(@RequestParam String name, Model model){
         String greeting = "Hello, " + name + "!";
         model.addAttribute("greeting", greeting);
-        return "hello";
+        return "helloapplication/hello";
+        //have to feed this a name
     }
 
     //handles requests of the form /hello/LaunchCode
@@ -22,12 +24,13 @@ public class HelloController {
     public String helloWithPathParam(@PathVariable String name, Model model){
         String greeting = "Hello, " + name + "!";
         model.addAttribute("greeting", greeting);
-        return "hello";
+        return "helloapplication/hello";
+        //must at name to path variable
     }
 
     @GetMapping("form")
     public String helloForm(){
-        return "form";
+        return "helloapplication/form";
     }
 
     @GetMapping("hello-names")
@@ -42,7 +45,7 @@ public class HelloController {
         names.add("Stanley");
         names.add("Angela");
         model.addAttribute("names", names);
-        return "hello-list";
+        return "helloapplication/hello-list";
     }
 
 }
