@@ -3,7 +3,9 @@ package org.launchcode.anticapplication.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +14,10 @@ import java.util.List;
 @RequestMapping("events")
 public class EventsController {
 
+    private static List<String> events = new ArrayList<>();
+
     @GetMapping
     public String displayAllEvents(Model model){
-        List<String> events = new ArrayList<>();
-        events.add("Giraffe Academy");
-        events.add("Launchcode");
-        events.add("Head First");
-        events.add("Other internet");
         model.addAttribute("events", events);
         return "events/index";
     }
@@ -28,6 +27,13 @@ public class EventsController {
     public String renderCreateEventForm(){
         return "events/create";
     }
+
+    @PostMapping("create")
+    public String createEvent(@RequestParam String eventName){
+        events.add(eventName);
+        return "redirect:";
+    }
+
 }
 
 
