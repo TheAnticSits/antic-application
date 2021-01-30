@@ -8,6 +8,8 @@
 
 <h1>All Coding Problems</h1>
 
+<p th:unless="${events} and ${events.size()}">No Coding Problems!</p>
+
 <ul>
     <th:block th:each="event : ${events}">
         <li th:text="${event}"></li>
