@@ -8,6 +8,8 @@
 
 <h1>All Coding Problems</h1>
 
+<nav th:replace="fragments :: navigation"></nav>
+
 <p th:unless="${events} and ${events.size()}">No Coding Problems!</p>
 
 <ul>
